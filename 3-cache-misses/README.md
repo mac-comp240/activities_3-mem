@@ -1,6 +1,7 @@
-# Similar code, Different task
+# Cache Misses
 
-This activity contains code that is similar to the code that you observed in memory activity 1. There are the following C code files:
+This activity contains code that is similar to the code that you observed in
+memory activity 1. There are the following C code files:
 
 | File          | What it does           |
 | ------------- |-------------|
@@ -11,11 +12,16 @@ This activity contains code that is similar to the code that you observed in mem
 
 Build them with make.
 
-This time, you will be examining precisely how many cache misses are encountered when running each of these examples, with varying sizes of data arrays and stride values for accessing them.
+This time, you will be examining precisely how many cache misses are encountered
+when running each of these examples.
 
-## 1-D array
+# One-Dimensional Array
 
-The code for sumvec.c has been updated slightly. The function called *sumvec_stride* has been improved to ensure that it has exactly the same number of data accesses and nearly equal number of instructions. In addition, in main() we have added a slightly more sophisticated way of handling the command line arguments. The possible arguments that you can include are:
+The code for `sumvec.c` has been updated slightly. The function called
+`sumvec_stride` has been improved to ensure that it has exactly the same number
+of data accesses and nearly equal number of instructions. In addition, `main()`
+now has a slightly more sophisticated way of handling the command line
+arguments. The possible arguments that you can include are:
 
     -n followed by a number for the size of the array
     -s followed by a number for the size of the stride
@@ -32,23 +38,42 @@ You can likely try bigger numbers for the size of the array, like this:
 
     ./sumvec -n 2048576 -s 4
     
-### Determine actual cache misses
+## Determine Actual Cache Misses
 
-Now let's use a new command-line tool that has been installed in your VM in codio. It is called **valgrind**. Along with a special tool that comes with it called cachegrind, we will be able to see exactly how many cache misses our code has when it runs under different conditions.
+You will be using **valgrind** and its accompanying utility **cachegrind** in
+order to track cache misses in this code. 
+
+># Note about Valgrind
+>
+>This part of the activity may be difficult for you to complete on your machine
+>for a few reasons:
+>
+>* If you are on macOS 10.14 or later, you will have trouble installing valgrind
+>from homebrew. You can install valgrind on the VM from the assembly unit of the
+>course or complete this activity with a partner who has valgrind.  
+>* If you have a large amount of RAM memory on your computer, `sumvec` may not
+>generate different numbers of cache misses even as you increase the array
+>length to incredibly large sizes. In this case, also try installing valgrind on
+>the class VM, which has more limited memory.
 
 You run valgrind with its cachegrind tool like this:
 
     valgrind --tool=cachegrind ./sumvec -n 1048576 -s 1
 
-In this case, you will see what the number of cache misses is in the *D* caches, which hold the data array used in this code, for the best-case, stride-1.  What is the miss rate reported for the D1 cache?
+You will see what the number of cache misses is in the *D* caches, which hold
+the data array used in this code, for the best-case: stride-1. What is the miss
+rate reported for the D1 cache?
 
-You can also observe how many misses there are from the instructions- this is the I1 cache.
+You can also observe how many misses there are from the instructions by checking
+the miss rate for the I1 cache.
 
 Now try running it again with various values of stride greater than 1, like this, for stride of 8:
 
     valgrind --tool=cachegrind ./sumvec -n 1048576 -s 8
 
-Verify that for stride 1 and any other stride, the number of data references,D, are close to the same, but not identical (this is because the stride-1 function is still slightly different that the code for the stride function).
+Verify that for stride 1 and any other stride, the number of data references,D,
+are close to the same, but not identical (this is because the stride-1 function
+is still slightly different than the code for the stride function).
 
 What do you observe about the cache miss rate as the stride increases?
 
@@ -65,13 +90,13 @@ And this will remove them all:
     rm cache*
 
 
-## 2-D matrix
+## Two-Dimensional Array
 
 Use valgrind with the cachegrind tool on the programs called **sumarrayrows** and **sumarraycols**.
 
 Is the difference in data miss rate what you would have expected?
 
-## 3-D matrix
+## Three-Dimensional Array
 
 The 3-D matrix program, called sumarray3d, has been updated from memory activity 1 to take one optional command line argument, -s. If you run it with -s like this:
 
