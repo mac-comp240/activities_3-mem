@@ -1,32 +1,17 @@
 CC = gcc
 ICS = ..
-CFLAGS =  -Og  # -Wall
+CFLAGS =  -Og  
 
 PROGS = sumvec \
     sumarrayrows\
 	sumarraycols\
 	sumarray3d\
 
-all: $(PROGS)
-
-$(PROGS): timing.h 
-
-#Note that the following are not necessary and covered by the above line
-# sumvec: timing.h
-
-# sumarrayrows: timing.h
-
-# sumarraycols: timing.h
-
-# sumarray3d: timing.h
-
-mountaintarfile:
-	tar cvf - mountain > mountain.tar
-
-matmulttarfile:
-	tar cvf - matmult > matmult.tar
+all: $(PROGS) timing.h
 
 clean:
-	rm -f $(PROGS) *.o *~
+	rm -f $(PROGS) *.o *~ 
+	rm -f -r *.dSYM
+	rm -f cache*
 
 
