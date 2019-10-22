@@ -19,8 +19,7 @@ which you will see in section 6.5:
 We are including a helper file called `timing.h` in these C files.
 
 
-### Terminology: .h files
-
+> ### Terminology: .h files
 >Files ending in .h are designed to be included in .c code files. So far, you
 >have included library .h files, such as stdio.h, that are built into the
 >language. In this case, we are using one as if it was written by you as a
