@@ -1,12 +1,12 @@
-# Timing Code
+# Spatial and Temporal Locality
 
-In addition to reading about how poor locality can affect the performance of a
-program, we can observe this phenomenon directly by timing how long it takes for
-code examples to execute. This method of timing different versions of code to
-determine how fast it runs is a skill that all good programmers should have.
+## Timing Code
 
-You will be observing the performance of these examples from your textbook,
-which you will see later in section 6.5:
+You can observe the impact of poor localty by timing how long your code takes to
+execute. This is a skill you should use as you work on larger projects.
+
+You will be observing the performance of examples from your textbook,
+which you will see in section 6.5:
 
 
 | File          | What it does           |
@@ -16,17 +16,18 @@ which you will see later in section 6.5:
 | sumarraycols.c | 2-d matrix manipulation with poor locality        |
 | sumarray3d.c | 3-d matrix manipulation with varying degrees of good and poor locality       |
 
+We are including a helper file called `timing.h` in these C files.
 
-We have added a new type of file that is used a great deal in C programming. It
-is called `timing.h`. Files ending in .h in C code are designed to be included
-in .c code files. So far, you have included these .h files, such as stdio.h,
-because they are from libraries built into the language. In this case, we are
-using one as if it was written by you as a programmer. On many C software
-development teams, there are a certain core set of these .h files that are
-shared within the team for different reasons. One reason is that the file
-contains utility functions that can be used over and over, routinely in various
-code files that comprise a project. This `timing.h` file falls into this
-category.
+
+### Terminology: .h files
+
+>Files ending in .h are designed to be included in .c code files. So far, you
+>have included library .h files, such as stdio.h, that are built into the
+>language. In this case, we are using one as if it was written by you as a
+>programmer. On many C software development teams, there are a certain core set
+>of these .h files that are shared within the team for different reasons. One
+>reason is that the file contains utility functions that are used routinely in a
+>project. This `timing.h` file falls into this category.
 
 We often wish to determine how long certain portions of our code take to run, so
 that we can determine how efficient it is and whether certain updates we make
