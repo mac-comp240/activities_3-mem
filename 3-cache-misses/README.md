@@ -34,7 +34,7 @@ This enables you to execute the program like these examples:
     ./sumvec -n 1048576 -s 16
     ./sumvec -n 1048576 -s 32
 
-You can likely try bigger numbers for the size of the array, like this:
+You can try bigger numbers for the size of the array, like this:
 
     ./sumvec -n 2048576 -s 4
     
@@ -51,10 +51,14 @@ order to track cache misses in this code.
 >* If you are on macOS 10.14 or later, you will have trouble installing valgrind
 >from homebrew. You can install valgrind on the VM from the assembly unit of the
 >course or complete this activity with a partner who has valgrind.  
->* If you have a large amount of RAM memory on your computer, `sumvec` may not
+>* Depending on your computer hardware, `sumvec` may not
 >generate different numbers of cache misses even as you increase the array
 >length to incredibly large sizes. In this case, also try installing valgrind on
->the class VM, which has more limited memory.
+>the class VM or working with a partner.
+>
+>The most important goal for this part of the activity is to see cachegrind
+>working. If `sumvec` doesn't generate interesting cachegrind output even as
+>you change `n` and `s`, move on to 2D and 3D arrays.
 
 You run valgrind with its cachegrind tool like this:
 
@@ -67,7 +71,8 @@ rate reported for the D1 cache?
 You can also observe how many misses there are from the instructions by checking
 the miss rate for the I1 cache.
 
-Now try running it again with various values of stride greater than 1, like this, for stride of 8:
+Now try running it again with various values of stride greater than 1, like
+this, for stride of 8:
 
     valgrind --tool=cachegrind ./sumvec -n 1048576 -s 8
 
@@ -77,38 +82,43 @@ is still slightly different than the code for the stride function).
 
 What do you observe about the cache miss rate as the stride increases?
 
-### cachegrind output files
+### Cachegrind Output Files
 
-**NOTE:** each time you run valgrind with the cachegrind tool, a new file gets written out in your workspace. You will see them in the tree on the left and if you do `ls` at the terminal. These files contain more detail than we need to get into for this course (there is quite a bit of information you can find out about exactly which cache lines were used when). These files are mainly designed to be read by other programs. One of these is called **cg_annnotate**. OPTIONAL: If you want to try it you can send one of the output files as a command line argument to **cg_annotate** in the terminal.
+Each time you run valgrind with the cachegrind tool, a new file gets
+written out in your workspace. You will see them if
+you do `ls` at the terminal. These files contain more detail than we need to get
+into for this course (there is quite a bit of information you can find out about
+exactly which cache lines were used when). These files are mainly designed to be
+read by other programs. One of these is called `cg_annnotate`. If
+you want to try it you can send one of the output files as a command line
+argument to `cg_annotate` in the terminal.
 
-You can remove the cachegrind output files as they pile up by using a nice feature of the command line. This will show them all to you:
-
-    ls cache*
-    
-And this will remove them all:
-
-    rm cache*
-
+When you run `make clean`, all of the cachegrind output files will be
+removed.
 
 ## Two-Dimensional Array
 
-Use valgrind with the cachegrind tool on the programs called **sumarrayrows** and **sumarraycols**.
+Use valgrind with the cachegrind tool on the programs called `sumarrayrows` and
+`sumarraycols`.
 
 Is the difference in data miss rate what you would have expected?
 
 ## Three-Dimensional Array
 
-The 3-D matrix program, called sumarray3d, has been updated from memory activity 1 to take one optional command line argument, -s. If you run it with -s like this:
+The 3-D matrix program `sumarray3d.c` has been updated from memory activity
+1 to take one optional command line argument, `-s`. If you run it with `-s` like
+this:
 
     ./sumarray3d -s
 
-You will see that it runs the slower version of the code, which has poor spatial locality. You run the faster version with good spatial locality by not including the -s flag, like this:
+You will see that it runs the slower version of the code, which has poor spatial
+locality. You run the faster version with good spatial locality by not including
+the `-s` flag, like this:
 
     ./sumarray3d
     
-Once you verify that the timing is slower for the version using the -s flag, then use valgrind with the cachegrind tool (still on the command line) to run each version.
+Once you verify that the timing is slower for the version using the `-s` flag,
+use cachegrind to run each version.
 
-Do the reported number of cache misses indicate what you might expect, given the spatial locality of the data references?
-
-
-
+Do the reported number of cache misses indicate what you might expect, given the
+spatial locality of the data references?
