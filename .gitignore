@@ -1,3 +1,12 @@
+# VS Code
+.vscode
+sftp.json
+# Atom
+.remote-sync.json
+.ftpconfig
+
+Icon?
+
 */.guides/*
 */.DS_Store
 */.settings
