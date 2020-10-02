@@ -61,7 +61,7 @@ For level 1 cache, note this information on the specification:
 
 This processor has 18 cores, so let's simply consider one of them. The "18 x" is signifying all of them. One core simply has 32 KB (kilobytes) of cache. **1 KB is 1024 bytes, also referred to as KiB**.
 
-Q1. For one of the the level 1 caches, per processor, what would the values for the t bits, the s bits, and the b bits be if 1024 GB of memory (the variable M above) was installed on the machine? 
+Q1. For one of the the level 1 caches, per processor, what would the values for the t bits, the s bits, and the b bits be if 1024 GB of memory (the variable M above) was installed on the machine and the cache block size is 64 bytes? 
 
 *Helpful Hints:* 8-way associative cache means that the number of lines per set (E) is 8. A powers of 2 table will be helpful.
 
@@ -73,7 +73,7 @@ For the 18 cores on this machine, each has a level 2 cache of size 256 KB, as gi
 
 Consider simply one core's level 2 cache for the following calculations.
 
-Q2. For the level 2 cache, what would the values for the t bits, the s bits, and the b bits be if 1024 GB of memory was installed on the machine?
+Q2. For the level 2 cache, what would the values for the t bits, the s bits, and the b bits be if 1024 GB of memory was installed on the machine and the cache block size is 64 bytes?
 
 
 ## Main Memory and Chip Design
