@@ -12,10 +12,10 @@
 /*
  * Stride-1 sum of all elements in the array V.
  */
-int sumvec(int * v) {  	
+int sumvec(int * v, int length) {  	
     int i, sum = 0; 
 
-    for (i = 0; i < N; i++) {
+    for (i = 0; i < length; i++) {
         sum += v[i];
     }
     return sum;	
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
     //  sum each element with stride 1
 //     /*
     wallclock_mark(&t);       // start timing
-    sum = sumvec(vector);
+    sum = sumvec(vector, array_length);
     s = wallclock_since(&t);  // finish timing
     
     //should sum to zero 
