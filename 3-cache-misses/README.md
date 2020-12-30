@@ -37,14 +37,14 @@ You can try bigger numbers for the size of the array, like this:
 You will be using **valgrind** and its accompanying utility **cachegrind** in
 order to track cache misses in this code. 
 
-## Note about Valgrind
+<!-- ## Note about Valgrind
 
 This part of the activity may be difficult for you to complete on your machine for a few reasons:
 
 * If you are on macOS 10.14 or later, you will have trouble installing valgrind from homebrew. You can install valgrind on the VM from the assembly unit of the course or complete this activity with a partner who has valgrind.  
 * Depending on your computer hardware, `sumvec` may not generate different numbers of cache misses even as you increase the array length to incredibly large sizes. In this case, also try installing valgrind on the class VM or working with a partner.
 
-The most important goal for this part of the activity is to see cachegrind working. If `sumvec` doesn't generate interesting cachegrind output even as you change `n` and `s`, move on to 2D and 3D arrays.
+The most important goal for this part of the activity is to see cachegrind working. If `sumvec` doesn't generate interesting cachegrind output even as you change `n` and `s`, move on to 2D and 3D arrays. -->
 
 You run valgrind with its cachegrind tool like this:
 
