@@ -50,7 +50,7 @@ To do this, recall this information from presentations and the text, Figure 6.26
 |----------------------|-------------------------------------------------------------------|
 | M = 2<sup>m</sup>    | Maximum number of unique memory addresses that map to cache              |
 | s = log<sub>2</sub>S | Number of bits needed for the set index portion of the address    |
-| b = 2<sub>B</sub>    | Number of bits needed for the block offset portion of the address |
+| b = 2<sup>B</sup>    | Number of bits needed for the block offset portion of the address |
 | t = m - (s + b)      | Number of bits needed for the tag portion of the address          |
 | C = B * E * S        | Overall cache size                                                |
 
@@ -63,7 +63,9 @@ This processor has 18 cores, so let's simply consider one of them. The "18 x" is
 
 Q1. For one of the the level 1 caches, per processor, what would the values for the t bits, the s bits, and the b bits be if 1024 GB of memory (the variable M above) was installed on the machine and the cache block size is 64 bytes? 
 
-*Helpful Hints:* 8-way associative cache means that the number of lines per set (E) is 8. A powers of 2 table will be helpful.
+*Helpful Hints:* 
+* M needs to be in terms of bytes. There are 2<sup>30</sup> bytes in a GB.
+* 8-way associative cache means that the number of lines per set (E) is 8. A powers of 2 table will be helpful.
 
 ### Level 2 cache address bits 
 
