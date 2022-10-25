@@ -1,4 +1,4 @@
-# Cache Organization
+# 3: Cache Organization
 
 There is no code for this activity. It is simply an investigation into how the bits for an address get set up to access a byte in cache. Work out the numbers needed for each cache and keep track of them in a new text file, `responses.txt`.
 
@@ -25,8 +25,6 @@ A full address to memory must have these elements:
 Suppose that we want to determine what the address is for the following real processor. A specification can be found here:
 
 [Intel® Xeon® Processor E5-2697 v4 Specifications](http://www.cpu-world.com/CPUs/Xeon/Intel-Xeon%20E5-2697%20v4.html)
-
-
 
 ## Enterprise servers can have a lot of memory
 
